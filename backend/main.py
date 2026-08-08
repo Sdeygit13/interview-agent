@@ -75,6 +75,71 @@ except json.JSONDecodeError as exc:
 
 
 # ============================================================
+# LOAD CANDIDATES
+# ============================================================
+
+try:
+    with open(
+        CANDIDATES_PATH,
+        "r",
+        encoding="utf-8",
+    ) as file:
+        candidates_data = json.load(file)
+
+except FileNotFoundError as exc:
+    raise RuntimeError(
+        f"Candidates file not found: {CANDIDATES_PATH}"
+    ) from exc
+
+except json.JSONDecodeError as exc:
+    raise RuntimeError(
+        f"Invalid candidates JSON: {CANDIDATES_PATH}"
+    ) from exc
+
+
+# ============================================================
+# BUILD CANDIDATE LOOKUP
+# ============================================================
+
+candidate_list = candidates_data.get(
+    "candidates",
+    []
+)
+
+if not isinstance(candidate_list, list):
+    raise RuntimeError(
+        "Invalid candidates.json format: "
+        "'candidates' must be a list."
+    )
+
+
+candidates: dict[str, dict[str, Any]] = {}
+
+for candidate in candidate_list:
+
+    if not isinstance(candidate, dict):
+        continue
+
+    member = candidate.get("member", {})
+
+    if not isinstance(member, dict):
+        continue
+
+    candidate_id = member.get("id")
+
+    if not candidate_id:
+        continue
+
+    candidates[str(candidate_id).strip().upper()] = candidate
+
+
+print(
+    f"Loaded {len(candidates)} candidates "
+    f"from {CANDIDATES_PATH}"
+)
+
+
+# ============================================================
 # SERVICES
 # ============================================================
 
@@ -196,6 +261,48 @@ def health() -> dict[str, str]:
     return {
         "status": "ok",
     }
+
+
+# ============================================================
+# CANDIDATE LOOKUP ENDPOINT
+# ============================================================
+
+@app.get(
+    "/api/candidates/{candidate_id}"
+)
+def get_candidate(
+    candidate_id: str,
+) -> dict[str, Any]:
+    """
+    Retrieve a candidate using their candidate ID.
+
+    Example:
+
+        GET /api/candidates/CAND-007
+    """
+
+    normalized_id = candidate_id.strip().upper()
+
+    if not normalized_id:
+        raise HTTPException(
+            status_code=400,
+            detail="Candidate ID cannot be empty.",
+        )
+
+    candidate = candidates.get(
+        normalized_id
+    )
+
+    if candidate is None:
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                f"Candidate '{normalized_id}' "
+                "was not found."
+            ),
+        )
+
+    return candidate
 
 
 # ============================================================
@@ -388,7 +495,10 @@ def interview(
         session_id
     )
 
-    if session is not None and session.completed:
+    if (
+        session is not None
+        and session.completed
+    ):
 
         try:
 
@@ -443,21 +553,6 @@ def _format_feedback(
 ) -> FeedbackResponse:
     """
     Convert internal feedback into the public API format.
-
-    Internal fields may include:
-
-        interviewSummary
-        overallAssessment
-        strengths
-        knowledgeGaps
-        recommendations
-
-    Public API fields:
-
-        summary
-        strengths
-        gaps
-        next
     """
 
     summary = (

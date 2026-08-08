@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -19,554 +21,698 @@
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
+
 
 <body>
 
-    <!-- =====================================================
-         APPLICATION
-    ====================================================== -->
+<div class="app">
 
-    <div class="app">
+    <!-- =================================================
+         HEADER
+    ================================================== -->
 
-        <!-- =================================================
-             HEADER
-        ================================================== -->
+    <header class="topbar">
 
-        <header class="topbar">
+        <div class="brand">
 
-            <div class="brand">
+            <div class="brand-logo">
+                🤖
+            </div>
 
-                <div class="brand-logo">
-                    🤖
+            <div class="brand-text">
+
+                <h1>
+                    The Interview Agent
+                </h1>
+
+                <p>
+                    AI-powered technical interview
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <div
+                id="connectionStatus"
+                class="connection-status"
+            >
+
+                <span class="status-dot"></span>
+
+                <span id="statusText">
+                    Ready
+                </span>
+
+            </div>
+
+
+            <button
+                id="themeToggle"
+                class="icon-button"
+                type="button"
+                title="Toggle theme"
+                aria-label="Toggle theme"
+            >
+                🌙
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =============================================
+             START SCREEN
+        ============================================== -->
+
+        <section
+            id="startScreen"
+            class="screen start-screen"
+        >
+
+            <div class="hero-card">
+
+                <div class="hero-icon">
+                    🎯
                 </div>
 
-                <div class="brand-text">
 
-                    <h1>
-                        The Interview Agent
-                    </h1>
+                <div class="eyebrow">
+                    ABTalks AI Cohort
+                </div>
 
-                    <p>
-                        AI-powered technical interview
+
+                <h2>
+                    Ready for your
+                    <span>technical interview?</span>
+                </h2>
+
+
+                <p class="hero-description">
+
+                    Enter your Candidate ID to retrieve
+                    your profile and start a personalized
+                    technical interview.
+
+                </p>
+
+
+                <!-- =====================================
+                     CANDIDATE ID LOOKUP
+                ====================================== -->
+
+                <div class="candidate-lookup">
+
+                    <label
+                        for="candidateIdInput"
+                        class="candidate-id-label"
+                    >
+                        Candidate ID
+                    </label>
+
+
+                    <div class="candidate-id-row">
+
+                        <input
+                            id="candidateIdInput"
+                            class="candidate-id-input"
+                            type="text"
+                            placeholder="e.g. CAND-007"
+                            autocomplete="off"
+                            spellcheck="false"
+                            maxlength="50"
+                            aria-label="Candidate ID"
+                        >
+
+
+                        <button
+                            id="findCandidateBtn"
+                            class="secondary-button candidate-search-button"
+                            type="button"
+                        >
+
+                            <span>
+                                🔍
+                            </span>
+
+                            Find Candidate
+
+                        </button>
+
+                    </div>
+
+
+                    <p
+                        id="candidateLookupMessage"
+                        class="candidate-lookup-message"
+                    >
+                        Enter your Candidate ID to continue.
                     </p>
+
+                </div>
+
+
+                <!-- =====================================
+                     CANDIDATE PREVIEW
+                ====================================== -->
+
+                <div
+                    id="candidatePreview"
+                    class="candidate-preview hidden"
+                >
+
+                    <div class="candidate-avatar">
+                        <span id="candidateInitials">
+                            --
+                        </span>
+                    </div>
+
+
+                    <div class="candidate-info">
+
+                        <strong id="candidateName">
+                            Candidate Name
+                        </strong>
+
+                        <span id="candidateRole">
+                            Job Role
+                        </span>
+
+                        <small id="candidateDetails">
+                            Candidate details
+                        </small>
+
+                    </div>
+
+
+                    <div
+                        id="candidateCheck"
+                        class="candidate-check"
+                    >
+                        ✓
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     START INTERVIEW
+                ====================================== -->
+
+                <button
+                    id="startInterviewBtn"
+                    class="primary-button start-button"
+                    type="button"
+                    disabled
+                >
+
+                    <span class="button-icon">
+                        🚀
+                    </span>
+
+                    Start Interview
+
+                </button>
+
+
+                <!-- =====================================
+                     INTERVIEW INFO
+                ====================================== -->
+
+                <div class="interview-info">
+
+                    <div>
+
+                        <strong>
+                            8+
+                        </strong>
+
+                        <span>
+                            Questions
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Adaptive
+                        </strong>
+
+                        <span>
+                            Interview
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            AI
+                        </strong>
+
+                        <span>
+                            Powered
+                        </span>
+
+                    </div>
 
                 </div>
 
             </div>
 
+        </section>
 
-            <div class="header-actions">
 
-                <div
-                    id="connectionStatus"
-                    class="connection-status"
-                >
-                    <span class="status-dot"></span>
-                    <span id="statusText">
-                        Ready
-                    </span>
+        <!-- =============================================
+             INTERVIEW SCREEN
+        ============================================== -->
+
+        <section
+            id="interviewScreen"
+            class="screen interview-screen hidden"
+        >
+
+
+            <!-- Interview Header -->
+
+            <div class="interview-header">
+
+                <div>
+
+                    <div class="interview-eyebrow">
+                        TECHNICAL INTERVIEW
+                    </div>
+
+                    <h2>
+                        Let's explore your
+                        technical thinking.
+                    </h2>
+
                 </div>
 
+
                 <button
-                    id="themeToggle"
-                    class="icon-button"
+                    id="restartBtn"
+                    class="secondary-button"
                     type="button"
-                    title="Toggle theme"
-                    aria-label="Toggle theme"
                 >
-                    🌙
+                    ↻ Restart
                 </button>
 
             </div>
 
-        </header>
+
+            <!-- Progress -->
+
+            <div class="progress-section">
+
+                <div class="progress-top">
+
+                    <span id="questionLabel">
+                        Question 1
+                    </span>
+
+                    <span id="progressLabel">
+                        Getting started
+                    </span>
+
+                </div>
 
 
-        <!-- =================================================
-             MAIN
-        ================================================== -->
+                <div class="progress-track">
 
-        <main class="main-content">
+                    <div
+                        id="progressBar"
+                        class="progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
 
 
-            <!-- =============================================
-                 START SCREEN
-            ============================================== -->
+            <!-- Topic -->
 
-            <section
-                id="startScreen"
-                class="screen start-screen"
+            <div
+                id="topicBadge"
+                class="topic-badge"
+            >
+                🧠 Adaptive Interview
+            </div>
+
+
+            <!-- Conversation -->
+
+            <div
+                id="conversation"
+                class="conversation"
+                aria-live="polite"
             >
 
-                <div class="hero-card">
+                <!-- Messages are inserted by script.js -->
 
-                    <div class="hero-icon">
-                        🎯
+            </div>
+
+
+            <!-- Thinking Indicator -->
+
+            <div
+                id="thinkingIndicator"
+                class="thinking-indicator hidden"
+            >
+
+                <div class="ai-mini-avatar">
+                    🤖
+                </div>
+
+
+                <div class="thinking-content">
+
+                    <span>
+                        AI interviewer is thinking
+                    </span>
+
+
+                    <div class="thinking-dots">
+
+                        <i></i>
+                        <i></i>
+                        <i></i>
+
                     </div>
 
-                    <div class="eyebrow">
-                        ABTalks AI Cohort
-                    </div>
+                </div>
 
-                    <h2>
-                        Ready for your
-                        <span>technical interview?</span>
-                    </h2>
-
-                    <p class="hero-description">
-                        The AI interviewer will ask personalized
-                        questions based on your ABTalks AI Cohort
-                        learning journey.
-                    </p>
+            </div>
 
 
-                    <!-- Candidate Preview -->
+            <!-- Answer Composer -->
 
-                    <div class="candidate-preview">
+            <div class="composer-wrapper">
 
-                        <div class="candidate-avatar">
-                            SJ
-                        </div>
+                <div class="composer">
 
-                        <div class="candidate-info">
+                    <textarea
+                        id="answerInput"
+                        rows="3"
+                        maxlength="5000"
+                        placeholder="Type your answer here..."
+                        aria-label="Your interview answer"
+                    ></textarea>
 
-                            <strong id="candidateName">
-                                Sarah Johnson
-                            </strong>
 
-                            <span id="candidateRole">
-                                Senior Data Engineer
+                    <div class="composer-footer">
+
+                        <div class="composer-hint">
+
+                            <span>
+                                Enter to send
+                            </span>
+
+                            <span class="separator">
+                                •
+                            </span>
+
+                            <span>
+                                Shift + Enter for new line
                             </span>
 
                         </div>
 
-                        <div class="candidate-check">
-                            ✓
-                        </div>
 
-                    </div>
+                        <div class="composer-actions">
 
-
-                    <button
-                        id="startInterviewBtn"
-                        class="primary-button start-button"
-                        type="button"
-                    >
-
-                        <span class="button-icon">
-                            🚀
-                        </span>
-
-                        Start Interview
-
-                    </button>
+                            <span
+                                id="characterCount"
+                                class="character-count"
+                            >
+                                0 / 5000
+                            </span>
 
 
-                    <div class="interview-info">
+                            <button
+                                id="sendButton"
+                                class="send-button"
+                                type="button"
+                            >
 
-                        <div>
-                            <strong>8+</strong>
-                            <span>Questions</span>
-                        </div>
+                                Send
 
-                        <div>
-                            <strong>4+</strong>
-                            <span>Curriculum Days</span>
-                        </div>
+                                <span>
+                                    ➤
+                                </span>
 
-                        <div>
-                            <strong>AI</strong>
-                            <span>Adaptive</span>
+                            </button>
+
                         </div>
 
                     </div>
 
                 </div>
 
-            </section>
+            </div>
+
+        </section>
 
 
-            <!-- =============================================
-                 INTERVIEW SCREEN
-            ============================================== -->
+        <!-- =============================================
+             COMPLETION SCREEN
+        ============================================== -->
 
-            <section
-                id="interviewScreen"
-                class="screen interview-screen hidden"
-            >
+        <section
+            id="completionScreen"
+            class="screen completion-screen hidden"
+        >
 
-                <!-- Interview Header -->
+            <div class="completion-card">
 
-                <div class="interview-header">
+                <div class="completion-icon">
+                    🎉
+                </div>
+
+
+                <div class="eyebrow">
+                    INTERVIEW COMPLETE
+                </div>
+
+
+                <h2>
+                    Great work!
+                </h2>
+
+
+                <p>
+                    Your technical interview has been
+                    completed successfully.
+                </p>
+
+
+                <!-- Summary -->
+
+                <div class="feedback-summary">
+
+                    <div class="feedback-icon">
+                        📋
+                    </div>
+
 
                     <div>
 
-                        <div class="interview-eyebrow">
-                            TECHNICAL INTERVIEW
-                        </div>
-
-                        <h2>
-                            Let's explore your
-                            technical thinking.
-                        </h2>
-
-                    </div>
+                        <h3>
+                            Overall Assessment
+                        </h3>
 
 
-                    <button
-                        id="restartBtn"
-                        class="secondary-button"
-                        type="button"
-                    >
-                        ↻ Restart
-                    </button>
-
-                </div>
-
-
-                <!-- Progress -->
-
-                <div class="progress-section">
-
-                    <div class="progress-top">
-
-                        <span id="questionLabel">
-                            Question 1
-                        </span>
-
-                        <span id="progressLabel">
-                            Getting started
-                        </span>
-
-                    </div>
-
-                    <div class="progress-track">
-
-                        <div
-                            id="progressBar"
-                            class="progress-bar"
-                        ></div>
+                        <p id="feedbackSummary">
+                            Preparing your feedback...
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- Topic -->
+                <!-- Feedback Grid -->
 
-                <div
-                    id="topicBadge"
-                    class="topic-badge"
-                >
-                    🧠 Adaptive Interview
-                </div>
+                <div class="feedback-grid">
 
 
-                <!-- Conversation -->
+                    <!-- Strengths -->
 
-                <div
-                    id="conversation"
-                    class="conversation"
-                    aria-live="polite"
-                >
+                    <div class="feedback-card strengths-card">
 
-                    <!-- Messages are inserted by script.js -->
+                        <div class="feedback-card-header">
 
-                </div>
-
-
-                <!-- Thinking Indicator -->
-
-                <div
-                    id="thinkingIndicator"
-                    class="thinking-indicator hidden"
-                >
-
-                    <div class="ai-mini-avatar">
-                        🤖
-                    </div>
-
-                    <div class="thinking-content">
-
-                        <span>
-                            AI interviewer is thinking
-                        </span>
-
-                        <div class="thinking-dots">
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Answer Composer -->
-
-                <div class="composer-wrapper">
-
-                    <div class="composer">
-
-                        <textarea
-                            id="answerInput"
-                            rows="3"
-                            maxlength="5000"
-                            placeholder="Type your answer here..."
-                            aria-label="Your interview answer"
-                        ></textarea>
-
-
-                        <div class="composer-footer">
-
-                            <div class="composer-hint">
-                                <span>
-                                    Enter to send
-                                </span>
-
-                                <span class="separator">
-                                    •
-                                </span>
-
-                                <span>
-                                    Shift + Enter for new line
-                                </span>
-                            </div>
-
-
-                            <div class="composer-actions">
-
-                                <span
-                                    id="characterCount"
-                                    class="character-count"
-                                >
-                                    0 / 5000
-                                </span>
-
-                                <button
-                                    id="sendButton"
-                                    class="send-button"
-                                    type="button"
-                                >
-                                    Send
-                                    <span>➤</span>
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =============================================
-                 COMPLETION SCREEN
-            ============================================== -->
-
-            <section
-                id="completionScreen"
-                class="screen completion-screen hidden"
-            >
-
-                <div class="completion-card">
-
-                    <div class="completion-icon">
-                        🎉
-                    </div>
-
-                    <div class="eyebrow">
-                        INTERVIEW COMPLETE
-                    </div>
-
-                    <h2>
-                        Great work!
-                    </h2>
-
-                    <p>
-                        Your technical interview has been
-                        completed successfully.
-                    </p>
-
-
-                    <!-- Summary -->
-
-                    <div class="feedback-summary">
-
-                        <div class="feedback-icon">
-                            📋
-                        </div>
-
-                        <div>
+                            <span class="feedback-card-icon">
+                                💪
+                            </span>
 
                             <h3>
-                                Overall Assessment
+                                Strengths
                             </h3>
 
-                            <p id="feedbackSummary">
-                                Preparing your feedback...
-                            </p>
-
                         </div>
+
+
+                        <ul id="strengthsList">
+
+                            <li>
+                                Loading...
+                            </li>
+
+                        </ul>
 
                     </div>
 
 
-                    <!-- Feedback Grid -->
+                    <!-- Gaps -->
 
-                    <div class="feedback-grid">
+                    <div class="feedback-card gaps-card">
 
+                        <div class="feedback-card-header">
 
-                        <!-- Strengths -->
+                            <span class="feedback-card-icon">
+                                🎯
+                            </span>
 
-                        <div class="feedback-card strengths-card">
-
-                            <div class="feedback-card-header">
-
-                                <span class="feedback-card-icon">
-                                    💪
-                                </span>
-
-                                <h3>
-                                    Strengths
-                                </h3>
-
-                            </div>
-
-                            <ul id="strengthsList">
-                                <li>
-                                    Loading...
-                                </li>
-                            </ul>
+                            <h3>
+                                Knowledge Gaps
+                            </h3>
 
                         </div>
 
 
-                        <!-- Gaps -->
+                        <ul id="gapsList">
 
-                        <div class="feedback-card gaps-card">
+                            <li>
+                                Loading...
+                            </li>
 
-                            <div class="feedback-card-header">
-
-                                <span class="feedback-card-icon">
-                                    🎯
-                                </span>
-
-                                <h3>
-                                    Knowledge Gaps
-                                </h3>
-
-                            </div>
-
-                            <ul id="gapsList">
-                                <li>
-                                    Loading...
-                                </li>
-                            </ul>
-
-                        </div>
-
-
-                        <!-- Next Steps -->
-
-                        <div class="feedback-card next-card">
-
-                            <div class="feedback-card-header">
-
-                                <span class="feedback-card-icon">
-                                    🚀
-                                </span>
-
-                                <h3>
-                                    Recommended Next Steps
-                                </h3>
-
-                            </div>
-
-                            <ul id="nextList">
-                                <li>
-                                    Loading...
-                                </li>
-                            </ul>
-
-                        </div>
+                        </ul>
 
                     </div>
 
 
-                    <button
-                        id="newInterviewBtn"
-                        class="primary-button"
-                        type="button"
-                    >
-                        🔄 Start New Interview
-                    </button>
+                    <!-- Next Steps -->
+
+                    <div class="feedback-card next-card">
+
+                        <div class="feedback-card-header">
+
+                            <span class="feedback-card-icon">
+                                🚀
+                            </span>
+
+                            <h3>
+                                Recommended Next Steps
+                            </h3>
+
+                        </div>
+
+
+                        <ul id="nextList">
+
+                            <li>
+                                Loading...
+                            </li>
+
+                        </ul>
+
+                    </div>
 
                 </div>
 
-            </section>
 
-        </main>
+                <button
+                    id="newInterviewBtn"
+                    class="primary-button"
+                    type="button"
+                >
+                    🔄 Start New Interview
+                </button>
 
+            </div>
 
-        <!-- =================================================
-             TOAST
-        ================================================== -->
+        </section>
 
-        <div
-            id="toast"
-            class="toast"
-            role="status"
-            aria-live="polite"
-        >
-            <span id="toastIcon">✓</span>
-            <span id="toastMessage">
-                Ready
-            </span>
-        </div>
+    </main>
 
 
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
+    <!-- =================================================
+         TOAST
+    ================================================== -->
 
-        <footer class="footer">
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
 
-            <span>
-                ABTalks AI Cohort
-            </span>
+        <span id="toastIcon">
+            ✓
+        </span>
 
-            <span>
-                •
-            </span>
-
-            <span>
-                The Interview Agent
-            </span>
-
-            <span>
-                •
-            </span>
-
-            <span>
-                Built with AI
-            </span>
-
-        </footer>
+        <span id="toastMessage">
+            Ready
+        </span>
 
     </div>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
 
-    <script src="script.js"></script>
+    <footer class="footer">
+
+        <span>
+            ABTalks AI Cohort
+        </span>
+
+        <span>
+            •
+        </span>
+
+        <span>
+            The Interview Agent
+        </span>
+
+        <span>
+            •
+        </span>
+
+        <span>
+            Built with AI
+        </span>
+
+    </footer>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="script.js"></script>
 
 </body>
+
 </html>
