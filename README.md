@@ -1,39 +1,23 @@
-<div align="center">
-
 # 🎯 The Interview Agent
 
-### AI-Powered Adaptive Technical Interview Platform
+> **AI-powered adaptive technical interview platform for the ABTalks AI Cohort**
 
-**Transforming traditional technical interviews into intelligent, personalized conversations.**
-
-<br>
-
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-Frontend-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-4285F4?style=for-the-badge&logo=google&logoColor=white)
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Git](https://img.shields.io/badge/Git-Version%20Control-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)
-
-<br>
-
-![Status](https://img.shields.io/badge/Status-Hackathon%20Ready-00C853?style=flat-square)
-![AI](https://img.shields.io/badge/AI-Adaptive-8A2BE2?style=flat-square)
-![API](https://img.shields.io/badge/API-REST-FF6B35?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
-
-</div>
+[![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-Frontend-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Gemini](https://img.shields.io/badge/Google_Gemini-AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![HTML5](https://img.shields.io/badge/HTML5-Frontend-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-UI-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 ---
 
-# 🌟 What is The Interview Agent?
+## ✨ Overview
 
 **The Interview Agent** is an AI-powered adaptive technical interview platform designed for the **ABTalks AI Cohort**.
 
-Unlike traditional interview systems that ask every candidate the same predefined questions, this platform creates a **dynamic interview experience**.
+Instead of presenting every candidate with the same fixed set of questions, the system uses the candidate's learning journey and previous responses to conduct a **dynamic, multi-turn technical interview**.
+
+The AI interviewer evaluates the candidate's answers and adapts subsequent questions according to their demonstrated technical understanding.
 
 The AI interviewer analyzes:
 
